@@ -14,17 +14,24 @@ def coin_flip_bet(bet, outcome, money):
     if outcome == zero_or_one():
         winnings = bet*2
         money = money + winnings 
-        return print("You have WON! Your winnings for this game are $" + str(winnings) + "!") 
+        if zero_or_one == 1:
+            result = "Tails"
+        else:
+            result = "Heads" 
+        return print("It was " + result + "!" + " You have WON! Your winnings for this game are $" + str(winnings) + "!") 
     else:
+        if zero_or_one == 1:
+            result = "Tails"
+        else:
+            result = "Heads"
         losses = bet
-        return print("You have LOST! Your losses for this game are -$" + str(losses) + "!") 
+        return print("It was " + result + "!" + " You have LOST! Your losses for this game are -$" + str(losses) + "!") 
 
 def heads_or_tails_conversion(heads_or_tails):
     if heads_or_tails == "Heads":
         outcome_bet = 0
         return outcome_bet
-    else:
-        heads_or_tails == "Tails"
+    elif heads_or_tails == "Tails":
         outcome_bet = 1
         return outcome_bet
 
