@@ -60,14 +60,42 @@ def coin_flip_game_start():
 
 #cho-han game
 
+def dice_roll():
+    roll1 = random.randint(1, 6)
+    roll2 = random.randint(1, 6)
+    rollsum = roll1 + roll2
+    return rollsum 
 
+def chohan_game_start():
+    print("In this game 2 dice are rolled, you have to guess whether the sum of these dice will be even or odd")
+    guess = input("Even or Odd? ")
+    
+    if dice_roll() % 2 == 0:
+        roll = 0
+        answer = "Even"
+    else:
+        roll = 1
+        answer = "Odd"
+    
+    if guess.lower() == "even":
+        num_guess = 0
+    else:
+        num_guess = 1
+
+    if roll == num_guess:
+        print("It was " + answer + "Won!") 
+    else:
+        print("It was " + answer + "Lost!")  
+
+
+    
 
 
 
 
 print("Welcome to the CMD Casino. Below can you please enter the amount of money you will be playing with today.")
 money = int(input("$"))
-print("Please choose a game from below by inputing the number of the game.\n0. Coin Flip Game")
+print("Please choose a game from below by inputing the number of the game.\n0. Coin Flip Game\n1. Cho-Han Game")
 first_game = input()
-games = [coin_flip_game_start(), 1, 2, 3, 4]
-games[first_game]
+games = ["coin_flip_game_start()", "chohan_game_start(), 2, 3, 4"]
+print(games[int(first_game)])
