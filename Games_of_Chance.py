@@ -1,6 +1,7 @@
 import random 
 
-money = 100
+
+#casino start message and menu 
 
 #Coint Flip Game
 
@@ -42,6 +43,8 @@ def check_money(bet_amount, money):
         print("You don't have enough money to bet that amount") 
         return 
 
+
+#function to run coin flip game
 def coin_flip_game_start():
     print("Welcome to the heads or tails game first you need to play a bet below. You have up to $100 to play with.")
     bet_amount = input("Amount you would like to bet $")
@@ -55,4 +58,16 @@ def coin_flip_game_start():
     outcome_bet = heads_or_tails_conversion(heads_or_tails)
     return coin_flip_bet(int(bet_amount), outcome_bet, money)
 
-coin_flip_game_start()
+#cho-han game
+
+
+
+
+
+
+print("Welcome to the CMD Casino. Below can you please enter the amount of money you will be playing with today.")
+money = int(input("$"))
+print("Please choose a game from below by inputing the number of the game.\n0. Coin Flip Game")
+first_game = input()
+games = [coin_flip_game_start(), 1, 2, 3, 4]
+games[first_game]
