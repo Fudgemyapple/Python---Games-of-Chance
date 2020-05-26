@@ -42,14 +42,17 @@ def check_money(bet_amount, money):
         print("You don't have enough money to bet that amount") 
         return 
 
-print("Welcome to the heads or tails game first you need to play a bet below. You have up to $100 to play with.")
-bet_amount = input("Amount you would like to bet $")
-while int(bet_amount) > money:
-    print("You don't have enough money to bet that amount. You have $" + str(money)) 
-    bet_amount = input("How much would you like to bet?" " $")
-heads_or_tails = input("Heads or Tails?")
-while heads_or_tails.lower != "heads" or heads_or_tails.lower != "tails":
-    print("You have not entered either heads or tails.")
+def coin_flip_game_start():
+    print("Welcome to the heads or tails game first you need to play a bet below. You have up to $100 to play with.")
+    bet_amount = input("Amount you would like to bet $")
+    while int(bet_amount) > money:
+        print("You don't have enough money to bet that amount. You have $" + str(money)) 
+        bet_amount = input("How much would you like to bet?" " $")
     heads_or_tails = input("Heads or Tails?")
-outcome_bet = heads_or_tails_conversion(heads_or_tails)
-coin_flip_bet(int(bet_amount), outcome_bet, money)
+    while heads_or_tails.lower() != "heads" and heads_or_tails.lower() != "tails":
+        print("You have not entered either heads or tails.")
+        heads_or_tails = input("Heads or Tails?")
+    outcome_bet = heads_or_tails_conversion(heads_or_tails)
+    return coin_flip_bet(int(bet_amount), outcome_bet, money)
+
+coin_flip_game_start()
