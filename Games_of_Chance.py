@@ -9,46 +9,10 @@ def zero_or_one():
     ans = random.randint(0, 1)
     return ans
 
-def coin_flip_bet(bet, outcome, money):
-    money = money - bet
-    flip = zero_or_one()
-    if outcome == flip:
-        winnings = bet*2
-        money = money + winnings 
-        if flip == 1:
-            result = "Tails"
-        else:
-            result = "Heads" 
-        return print("It was " + result + "!" + " You have WON! Your winnings for this game are $" + str(winnings) + "!") 
-    else:
-        if flip == 1:
-            result = "Tails"
-        else:
-            result = "Heads"
-        losses = bet
-        return print("It was " + result + "!" + " You have LOST! Your losses for this game are -$" + str(losses) + "!") 
-    return game_interlude(money)
-
-def heads_or_tails_conversion(heads_or_tails):
-    if heads_or_tails.lower() == "heads":
-        outcome_bet = 0
-        return outcome_bet
-    elif heads_or_tails.lower() == "tails":
-        outcome_bet = 1
-        return outcome_bet
-
-def check_money(bet_amount, money):
-    if bet_amount <= money:
-        return 
-    else:
-        print("You don't have enough money to bet that amount") 
-        return 
-
-
 #function to run coin flip game
 def coin_flip_game_start(money):
     print("Welcome to the heads or tails game first you need to place a bet below. You have up to " + str(money) + " to play with.")
-    bet_amount = input("Amount you would like to bet $")
+    bet_amount = int(input("Amount you would like to bet $"))
     while int(bet_amount) > money:
         print("You don't have enough money to bet that amount. You have $" + str(money)) 
         bet_amount = input("How much would you like to bet?" " $")
@@ -56,8 +20,31 @@ def coin_flip_game_start(money):
     while heads_or_tails.lower() != "heads" and heads_or_tails.lower() != "tails":
         print("You have not entered either heads or tails.")
         heads_or_tails = input("Heads or Tails?")
-    outcome_bet = heads_or_tails_conversion(heads_or_tails)
-    return coin_flip_bet(int(bet_amount), outcome_bet, money)
+    if heads_or_tails.lower() == "heads":
+        num_heads_or_tails = 0
+    elif heads_or_tails.lower() == "tails":
+        num_heads_or_tails = 1
+    money = money - int(bet_amount)
+    flip = zero_or_one()
+    if num_heads_or_tails == flip:
+        money = money + bet_amount*2
+        if flip == 1:
+            result = "Tails"
+        else:
+            result = "Heads" 
+            print("It was " + result + "!" + " You have WON! Your winnings for this game are $" + str(bet_amount*2) + "!") 
+    else:
+        if flip == 1:
+            result = "Tails"
+        else:
+            result = "Heads"
+            print("It was " + result + "!" + " You have LOST! Your losses for this game are -$" + str(bet_amount) + "!") 
+    return game_interlude(money)
+    
+
+
+
+
 
 #cho-han game
 
